@@ -1,0 +1,9 @@
+---
+- name: Converge
+  hosts: all
+  vars:
+    docker_package: docker.io
+  tasks:
+    - name: "Include docker"
+      include_role:
+        name: "docker"

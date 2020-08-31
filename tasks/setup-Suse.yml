@@ -1,0 +1,6 @@
+---
+- name: Install docker
+  package:
+    name: "{{ docker_package }}"
+    state: present
+  notify: start docker

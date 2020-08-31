@@ -1,0 +1,23 @@
+---
+- name: Set up docker system prune cron
+  template:
+    src: docker-prune
+    dest: /etc/cron.daily/docker-prune
+    mode: "0755"
+  when: ansible_service_mgr != "systemd"
+
+- name: Set up docker system prune timer
+  block:
+    - name: Copy systemd units
+      template:
+        src: "{{ item }}"
+        dest: "/etc/systemd/system/{{ item }}"
+      with_items:
+        - "docker-prune.service"
+        - "docker-prune.timer"
+    - name: Start docker system prune timer
+      systemd:
+        name: "docker-prune.timer"
+        state: started
+        enabled: true
+  when: ansible_service_mgr == "systemd"

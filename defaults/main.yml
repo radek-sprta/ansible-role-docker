@@ -1,0 +1,18 @@
+---
+# Compose options
+docker_install_compose: false
+
+# Docker python library options
+docker_install_python_library: false
+
+# System prune options
+docker_prune_period: "24h"
+docker_system_prune: true
+
+# Service options
+docker_service: docker
+docker_service_enabled: true
+docker_service_state: started
+
+# List of users to add to docker group
+docker_users: []

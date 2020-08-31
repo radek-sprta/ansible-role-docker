@@ -1,0 +1,11 @@
+[Unit]
+Description=Docker system prune
+RefuseManualStart=no
+RefuseManualStop=no
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+
+[Install]
+WantedBy=timers.target
