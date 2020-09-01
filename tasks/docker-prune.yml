@@ -12,6 +12,7 @@
       template:
         src: "{{ item }}"
         dest: "/etc/systemd/system/{{ item }}"
+        mode: "0644"
       with_items:
         - "docker-prune.service"
         - "docker-prune.timer"
