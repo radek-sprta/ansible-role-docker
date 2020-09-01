@@ -8,4 +8,4 @@
   package:
     name: "{{ docker_package }}"
     state: present
-  notify: start docker
+  notify: Start docker
