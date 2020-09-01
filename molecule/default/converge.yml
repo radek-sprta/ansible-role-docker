@@ -1,9 +1,12 @@
 ---
 - name: Converge
   hosts: all
+
   vars:
-    docker_package: docker.io
+    docker_install_compose: true
+    docker_install_python_library: true
+
   tasks:
     - name: "Include docker"
       include_role:
-        name: "docker"
+        name: "ansible-role-docker"

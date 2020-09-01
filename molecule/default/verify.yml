@@ -15,3 +15,25 @@
       assert:
         that:
           - "ansible_facts.services.docker is defined"
+          - "ansible_facts.services.docker is started"
+
+    - name: Assert Docker-prune is running
+      assert:
+        that:
+          - "ansible_facts.services.docker-prune is defined"
+          - "ansible_facts.services.docker-prune is started"
+      when: ansible_service_mgr == "systemd"
+
+    - name: Check if docker-compose and docker python library are installed
+      pip:
+        name: "{{ item }}"
+      with_items:
+        - docker
+        - docker-compose
+      check_mode: true
+      register: pip_packages
+
+    - name: Assert that pip packages were already installed
+      assert:
+        that:
+          - "not pip_packages.results[0].changed"
