@@ -7,8 +7,13 @@ lint: |
   yamllint .
   ansible-lint
 platforms:
-  - name: ubuntu
+  # Check only these images, because docker/systemd/ansible dont
+  # play well together
+  - name: Ubuntu
     image: docker.io/geerlingguy/docker-ubuntu1604-ansible
+    pre_build_image: true
+  - name: Debian
+    image: docker.io/geerlingguy/docker-debian10-ansible
     pre_build_image: true
 provisioner:
   name: ansible
