@@ -5,6 +5,10 @@ docker_install_compose: false
 # Docker python library options
 docker_install_python_library: false
 
+# Logging options
+docker_log_driver: json-file
+docker_log_opts: {}
+
 # System prune options
 docker_prune_period: "24h"
 docker_system_prune: true

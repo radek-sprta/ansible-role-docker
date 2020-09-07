@@ -1,0 +1,5 @@
+---
+- name: "Configure Docker logging"
+  template:
+    src: daemon.json
+    dest: /etc/docker/daemon.json

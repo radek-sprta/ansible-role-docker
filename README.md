@@ -11,6 +11,10 @@ Install [Docker](https://www.docker.com) and optionally docker-compose and the P
 - `docker_service_enabled`: Whether Docker should be enabled after restarted. Defaults to `true`.
 - `docker_service_state`: State for the Docker service after installation. Defaults to `started`.
 
+### Logging options
+- `docker_log_drive`: Docker logging driver. Defaults to json-file (Docker default).
+- `docker_log_opts`: Additional logging options. Pass as dictionary of Docker log-opts.
+
 ### Docker system prune
 Automatically run `docker system prune`, so the system does not get cluttered with old images and containers.
 

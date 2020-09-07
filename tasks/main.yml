@@ -16,5 +16,8 @@
 - import_tasks: "docker-prune.yml"
   when: docker_system_prune | bool
 
+- import_tasks: "docker-logging.yml"
+  when: docker_log_driver != "json-driver"
+
 - include_tasks: "docker-users.yml"
   when: docker_users | length > 0
