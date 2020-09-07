@@ -3,6 +3,7 @@ Install [Docker](https://www.docker.com) and optionally docker-compose and the P
 
 ## Role Variables
 ### General options
+- `docker_install`: Install Docker runtime. Defaults to true.
 - `docker_install_compose`: Install docker-compose. Defaults to false.
 - `docker_install_python_library`: Install docker python library. Defaults to false.
 - `docker_package`: Name of the Docker package to install. Defaults to the appropriate system package.

@@ -3,6 +3,7 @@
   include_vars: "{{ ansible_os_family }}.yml"
 
 - include_tasks: "setup-{{ ansible_os_family }}.yml"
+  when: docker_install | bool
 
 - import_tasks: "install-pip.yml"
   when: docker_install_compose | bool or docker_install_python_library | bool

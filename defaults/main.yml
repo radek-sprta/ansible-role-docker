@@ -1,4 +1,7 @@
 ---
+# Docker runtime
+docker_install: true
+
 # Compose options
 docker_install_compose: false
 
