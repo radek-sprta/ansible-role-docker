@@ -2,6 +2,16 @@
 - name: Include system-specific vars
   include_vars: "{{ ansible_os_family }}.yml"
 
+- name: Set Docker package variable
+  set_fact:
+    docker_package: "{{ __docker_package }}"
+  when: not docker_package | bool
+
+- name: Set Docker pip package variable
+  set_fact:
+    docker_pip_package: "{{ __docker_pip_package }}"
+  when: not docker_pip_package | bool
+
 - include_tasks: "setup-{{ ansible_os_family }}.yml"
   when: docker_install | bool
 

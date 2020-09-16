@@ -7,6 +7,7 @@ Install [Docker](https://www.docker.com) and optionally docker-compose and the P
 - `docker_install_compose`: Install docker-compose. Defaults to false.
 - `docker_install_python_library`: Install docker python library. Defaults to false.
 - `docker_package`: Name of the Docker package to install. Defaults to the appropriate system package.
+- `docker_pip_package`: Name of the pip package to install. Defaults to the appropriate system package.
 
 ### Service options
 - `docker_service_enabled`: Whether Docker should be enabled after restarted. Defaults to `true`.

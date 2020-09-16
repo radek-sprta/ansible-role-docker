@@ -23,3 +23,7 @@ docker_service_state: started
 
 # List of users to add to docker group
 docker_users: []
+
+# Package options
+docker_package: ''
+docker_pip_package: ''
