@@ -7,12 +7,24 @@ lint: |
   yamllint .
   ansible-lint
 platforms:
-  # Check only these images, because docker/systemd/ansible dont
-  # play well together
-  - name: Ubuntu
+  - name: Xenial
     image: docker.io/geerlingguy/docker-ubuntu1604-ansible
     pre_build_image: true
-  - name: Debian
+  - name: Bionic
+    image: docker.io/geerlingguy/docker-ubuntu1804-ansible
+    command: ''
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+    privileged: true
+    pre_build_image: true
+  - name: Focal
+    image: docker.io/geerlingguy/docker-ubuntu2004-ansible
+    command: ''
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+    privileged: true
+    pre_build_image: true
+  - name: Buster
     image: docker.io/geerlingguy/docker-debian10-ansible
     pre_build_image: true
 provisioner:

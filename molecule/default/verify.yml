@@ -16,18 +16,27 @@
         that:
           - "ansible_facts.services.docker is defined"
           - "ansible_facts.services.docker is started"
-
-    - name: Assert Docker-prune is running
-      assert:
-        that:
-          - "ansible_facts.services.docker-prune is defined"
-          - "ansible_facts.services.docker-prune is started"
+      when: ansible_service_mgr != "systemd"
+      
+      # Systemd acts weird in containers, so we check it
+      # directly, without using the service module
+    - name: Check Docker services
+      block:
+        - name: Assert Docker is enabled
+          command: systemctl status docker.service
+          register: docker_status
+          changed_when: false
+          failed_when: "not 'enabled' in docker_status.stdout"
+        - name: Assert Docker-prune is enabled
+          command: systemctl status docker-prune.timer
+          register: docker_prune_status
+          changed_when: false
+          failed_when: "not 'enabled' in docker_prune_status.stdout"
       when: ansible_service_mgr == "systemd"
 
     - name: Check if docker-compose and docker python library are installed
       pip:
-        name: "{{ item }}"
-      with_items:
+        name:
         - docker
         - docker-compose
       check_mode: true
@@ -36,4 +45,4 @@
     - name: Assert that pip packages were already installed
       assert:
         that:
-          - "not pip_packages.results[0].changed"
+          - "not pip_packages.changed"
