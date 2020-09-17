@@ -26,6 +26,10 @@ platforms:
     pre_build_image: true
   - name: Buster
     image: docker.io/geerlingguy/docker-debian10-ansible
+    commmand: ''
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileges: true
     pre_build_image: true
 provisioner:
   name: ansible

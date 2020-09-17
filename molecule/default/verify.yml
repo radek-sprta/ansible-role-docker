@@ -1,11 +1,6 @@
 ---
-# This is an example playbook to execute Ansible tests.
-
 - name: Verify
   hosts: all
-
-  vars:
-    test_docker_service: docker
 
   tasks:
     - name: Populate service facts
@@ -17,28 +12,31 @@
           - "ansible_facts.services.docker is defined"
           - "ansible_facts.services.docker is started"
       when: ansible_service_mgr != "systemd"
-      
+
       # Systemd acts weird in containers, so we check it
       # directly, without using the service module
     - name: Check Docker services
       block:
-        - name: Assert Docker is enabled
-          command: systemctl status docker.service
+        - name: Check that Docker services are enabled and started
+          systemd:
+            name: "{{ item }}"
+            enabled: true
+            state: started
           register: docker_status
-          changed_when: false
-          failed_when: "not 'enabled' in docker_status.stdout"
-        - name: Assert Docker-prune is enabled
-          command: systemctl status docker-prune.timer
-          register: docker_prune_status
-          changed_when: false
-          failed_when: "not 'enabled' in docker_prune_status.stdout"
+          with_items:
+            - docker.service
+            - docker-prune.timer
+        - name: Assert Docker services are enabled and started
+          assert:
+            that:
+              - "not docker_status.results[0].changed"
       when: ansible_service_mgr == "systemd"
 
     - name: Check if docker-compose and docker python library are installed
       pip:
         name:
-        - docker
-        - docker-compose
+          - docker
+          - docker-compose
       check_mode: true
       register: pip_packages
 
