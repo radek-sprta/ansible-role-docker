@@ -26,10 +26,24 @@ platforms:
     pre_build_image: true
   - name: Buster
     image: docker.io/geerlingguy/docker-debian10-ansible
-    commmand: ''
+    command: ''
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileges: true
+    privileged: true
+    pre_build_image: true
+  - name: Opensuse15.1
+    image: docker.io/rsprta/opensuse-ansible:15.1
+    command: ''
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+    privileged: true
+    pre_build_image: true
+  - name: Opensuse15.2
+    image: docker.io/rsprta/opensuse-ansible:15.2
+    command: ''
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+    privileged: true
     pre_build_image: true
 provisioner:
   name: ansible
