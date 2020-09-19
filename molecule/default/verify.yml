@@ -3,34 +3,19 @@
   hosts: all
 
   tasks:
-    - name: Populate service facts
-      service_facts:
+    # Systemd acts weird in containers, so we check it
+    # directly, without using the service_facts
+    - name: Check that Docker is enabled and stopped
+      service:
+        name: docker
+        enabled: true
+        state: stopped
+      register: docker_status
 
-    - name: Assert Docker is installed
+    - name: Assert Docker is enabled and stopped
       assert:
         that:
-          - "ansible_facts.services.docker is defined"
-          - "ansible_facts.services.docker is started"
-      when: ansible_service_mgr != "systemd"
-
-      # Systemd acts weird in containers, so we check it
-      # directly, without using the service module
-    - name: Check Docker services
-      block:
-        - name: Check that Docker services are enabled and started
-          systemd:
-            name: "{{ item }}"
-            enabled: true
-            state: started
-          register: docker_status
-          with_items:
-            - docker.service
-            - docker-prune.timer
-        - name: Assert Docker services are enabled and started
-          assert:
-            that:
-              - "not docker_status.results[0].changed"
-      when: ansible_service_mgr == "systemd"
+          - "not docker_status.changed"
 
     - name: Check if docker-compose and docker python library are installed
       pip:

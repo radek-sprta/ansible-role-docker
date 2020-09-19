@@ -5,6 +5,7 @@
   vars:
     docker_install_compose: true
     docker_install_python_library: true
+    docker_service_state: stopped
 
   pre_tasks:
     - name: Update apt cache.
