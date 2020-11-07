@@ -2,7 +2,7 @@
 - name: Set up docker system prune cron
   template:
     src: docker-prune
-    dest: /etc/cron.daily/docker-prune
+    dest: "{{ __docker_cron_path }}/docker-prune"
     mode: "0755"
   when: ansible_service_mgr != "systemd"
 

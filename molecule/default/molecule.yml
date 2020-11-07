@@ -7,6 +7,12 @@ lint: |
   yamllint .
   ansible-lint
 platforms:
+  - name: Alpine
+    image: docker.io/rsprta/alpine-ansible
+    command: ''
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+    pre_build_image: true
   - name: Xenial
     image: docker.io/geerlingguy/docker-ubuntu1604-ansible
     pre_build_image: true

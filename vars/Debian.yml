@@ -1,3 +1,5 @@
 ---
+__docker_compose_build_packages: libffi-dev
+__docker_cron_path: /etc/cron.daily
 __docker_package: docker.io
 __docker_pip_package: python3-pip

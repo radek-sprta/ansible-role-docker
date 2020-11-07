@@ -1,0 +1,8 @@
+---
+__docker_compose_build_packages:
+  - build-base
+  - libffi-dev
+  - python3-dev
+__docker_cron_path: /etc/periodic/daily
+__docker_package: docker
+__docker_pip_package: py3-pip

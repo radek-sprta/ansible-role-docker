@@ -1,11 +1,8 @@
 ---
-# Compose installation fails without this library
-- name: Install libffi-dev
-  apt:
-    name: libffi-dev
+- name: Install docker-compose build dependencies
+  package:
+    name: "{{ __docker_compose_build_packages }}"
     state: present
-    update_cache: true
-  when: ansible_os_family == "Debian"
 
 - name: Install docker-compose
   pip:
