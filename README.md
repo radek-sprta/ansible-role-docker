@@ -1,4 +1,4 @@
-# Docker
+# Ansible Role: Docker
 Install [Docker](https://www.docker.com) and optionally docker-compose and the Python docker library.
 
 ## Role Variables
