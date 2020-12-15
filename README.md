@@ -1,4 +1,4 @@
-# Ansible Role: Docker
+# Ansible Role: Docker [![Ansible Role](https://img.shields.io/ansible/role/50554)](https://galaxy.ansible.com/radek_sprta/docker) [![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/radek-sprta/ansible-role-docker)](https://gitlab.com/radek-sprta/ansible-role-docker/-/tags) [![Ansible Role](https://img.shields.io/ansible/role/d/50554)](https://galaxy.ansible.com/radek_sprta/docker) [![Ansible Role](https://img.shields.io/ansible/quality/50554)](https://galaxy.ansible.com/radek_sprta/docker) [![Pipeline status](https://gitlab.com/radek-sprta/ansible-role-docker/badges/master/pipeline.svg)](https://gitlab.com/radek-sprta/ansible-role-docker/commits/master)
 
 Install [Docker](https://www.docker.com) and optionally docker-compose and the Python docker library.
 
