@@ -21,6 +21,10 @@ docker_service: docker
 docker_service_enabled: true
 docker_service_state: started
 
+# Metrics options
+docker_enable_metrics: false
+docker_metrics_host: 127.0.0.1
+
 # List of users to add to docker group
 docker_users: []
 

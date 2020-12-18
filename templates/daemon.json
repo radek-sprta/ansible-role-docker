@@ -1,4 +1,0 @@
-{
-  "log-driver": "{{ docker_log_driver }}",
-  "log-opts": {{ docker_log_opts }}
-}

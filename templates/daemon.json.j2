@@ -1,0 +1,9 @@
+#jinja2: lstrip_blocks: "True"
+{
+  {% if docker_enable_metrics %}
+  "metrics-addr" : "{{ docker_metrics_host }}:9323",
+  "experimental" : true,
+  {% endif %}
+  "log-driver": "{{ docker_log_driver }}",
+  "log-opts": {{ docker_log_opts }}
+}
