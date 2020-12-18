@@ -1,8 +1,9 @@
 ---
-- name: "Configure Docker logging"
+- name: "Configure Docker extra options"
   template:
     src: daemon.json.j2
     dest: /etc/docker/daemon.json
     owner: root
     group: root
     mode: "0644"
+  notify: Restart docker
