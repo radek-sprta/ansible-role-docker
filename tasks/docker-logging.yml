@@ -1,8 +1,0 @@
----
-- name: "Configure Docker logging"
-  template:
-    src: daemon.json.j2
-    dest: /etc/docker/daemon.json
-    owner: root
-    group: root
-    mode: "0644"
