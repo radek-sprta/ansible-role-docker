@@ -5,5 +5,5 @@
   "experimental" : true,
   {% endif %}
   "log-driver": "{{ docker_log_driver }}",
-  "log-opts": {{ docker_log_opts }}
+  "log-opts": {{ docker_log_opts | to_nice_json }}
 }
