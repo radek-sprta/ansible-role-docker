@@ -14,6 +14,7 @@ galaxy_info:
     - name: Debian
       versions:
         - buster
+        - bullseye
     - name: Ubuntu
       versions:
         - xenial
