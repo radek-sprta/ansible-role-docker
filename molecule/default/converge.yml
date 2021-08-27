@@ -17,4 +17,4 @@
   tasks:
     - name: "Include docker"
       include_role:
-        name: "ansible-role-docker"
+        name: "radek_sprta.docker"
