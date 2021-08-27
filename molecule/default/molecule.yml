@@ -13,9 +13,6 @@ platforms:
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
     pre_build_image: true
-  - name: Xenial
-    image: docker.io/geerlingguy/docker-ubuntu1604-ansible
-    pre_build_image: true
   - name: Bionic
     image: docker.io/geerlingguy/docker-ubuntu1804-ansible
     command: ''
