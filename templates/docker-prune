@@ -1,3 +1,3 @@
 #! /usr/bin/env bash
 
-docker system prune -af --filter "until={{ docker_prune_period }}"
+docker system prune -af --filter --volumes "until={{ docker_prune_period }}"
