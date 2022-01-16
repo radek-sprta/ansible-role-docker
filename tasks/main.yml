@@ -30,6 +30,9 @@
 - import_tasks: "docker-extras.yml"
   when: docker_enable_metrics or docker_log_driver != "json-file"
 
+- import_tasks: "docker-options.yml"
+  when: docker_daemon_options | length > 0
+
 - include_tasks: "docker-users.yml"
   when: docker_users | length > 0
 

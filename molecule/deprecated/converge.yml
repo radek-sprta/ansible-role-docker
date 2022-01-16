@@ -3,7 +3,7 @@
   hosts: all
 
   vars:
-    docker_daemon_options: {'log-driver': 'json-file'}
+    docker_enable_metrics: true
     docker_install_compose: true
     docker_install_python_library: true
     docker_service_state: stopped

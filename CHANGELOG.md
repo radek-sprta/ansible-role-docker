@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## 2.2.0 - 2022-01-13
+
+### Added
+
+- `docker_daemon_options` to specify all of daemon.json.
+
+### Deprecated
+
+- The following options are now deprecated and will be removed in the future:
+  - `docker_enable_metrics`
+  - `docker_log_driver`
+  - `docker_log_opts`
+  - `docker_metrics_host`
+
 ## [2.1.0][2.1.0] - 2021-11-21
 
 ### Added
