@@ -1,0 +1,17 @@
+---
+- name: "Make sure /etc/docker directory exists"
+  file:
+    path: /etc/docker
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
+- name: "Configure Docker extra options"
+  copy:
+    content: "{{ docker_daemon_options | to_nice_json }}"
+    dest: /etc/docker/daemon.json
+    owner: root
+    group: root
+    mode: 0644
+  notify: Restart docker
