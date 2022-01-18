@@ -29,3 +29,9 @@
       assert:
         that:
           - "not pip_packages.changed"
+
+    - name: Check daemon.json existence
+      stat:
+        path: /etc/docker/daemon.json
+      register: daemon_json_file
+      failed_when: not daemon_json_file.stat.exists

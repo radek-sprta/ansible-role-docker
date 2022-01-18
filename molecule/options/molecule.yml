@@ -1,0 +1,54 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint: |
+  yamllint .
+  ansible-lint
+platforms:
+  - name: Alpine
+    image: docker.io/rsprta/alpine-ansible
+    command: ''
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+    pre_build_image: true
+  - name: Bionic
+    image: docker.io/geerlingguy/docker-ubuntu1804-ansible
+    command: ''
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+    privileged: true
+    pre_build_image: true
+  - name: Focal
+    image: docker.io/geerlingguy/docker-ubuntu2004-ansible
+    command: ''
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+    privileged: true
+    pre_build_image: true
+  - name: Buster
+    image: docker.io/geerlingguy/docker-debian10-ansible
+    command: ''
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: true
+    pre_build_image: true
+  - name: Bullseye
+    image: docker.io/rsprta/debian-ansible:bullseye
+    command: ''
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: true
+    pre_build_image: true
+  - name: Opensuse15
+    image: docker.io/rsprta/opensuse-ansible:15.3
+    command: ''
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+    privileged: true
+    pre_build_image: true
+provisioner:
+  name: ansible
+verifier:
+  name: ansible
