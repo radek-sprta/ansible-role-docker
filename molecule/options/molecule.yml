@@ -27,20 +27,6 @@ platforms:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
     privileged: true
     pre_build_image: true
-  - name: Buster
-    image: docker.io/geerlingguy/docker-debian10-ansible
-    command: ''
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: true
-    pre_build_image: true
-  - name: Bullseye
-    image: docker.io/rsprta/debian-ansible:bullseye
-    command: ''
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: true
-    pre_build_image: true
   - name: Opensuse15
     image: docker.io/rsprta/opensuse-ansible:15.3
     command: ''

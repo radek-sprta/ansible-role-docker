@@ -30,8 +30,6 @@ test:molecule:options:
     ANSIBLE_FORCE_COLOR: 1
   script:
     - molecule test -s options
-  # Could not find a reason why this fails on Debian images in CI
-  allow_failure: true
 
 test:molecule:deprecated:
   stage: test
@@ -41,8 +39,6 @@ test:molecule:deprecated:
     ANSIBLE_FORCE_COLOR: 1
   script:
     - molecule test -s deprecated
-  # Could not find a reason why this fails on Debian images in CI
-  allow_failure: true
 
 release:galaxy:
   stage: release
