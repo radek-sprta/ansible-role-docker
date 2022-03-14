@@ -13,7 +13,9 @@ docker_prune_period: "24h"
 docker_system_prune: true
 
 # Service options
-docker_service: docker
+docker_service:
+  - docker.service
+  - docker.socket
 docker_service_enabled: true
 docker_service_state: started
 
