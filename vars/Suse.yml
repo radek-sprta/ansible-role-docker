@@ -3,3 +3,5 @@ __docker_compose_build_packages: ""
 __docker_cron_path: /etc/cron.daily
 __docker_package: docker
 __docker_pip_package: python3-pip
+docker_service:
+  - docker.service
