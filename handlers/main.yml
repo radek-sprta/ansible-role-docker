@@ -1,8 +1,9 @@
 ---
 - name: Restart docker
   service:
-    name: "{{ docker_service }}"
+    name: "{{ item }}"
     state: restarted
+  with_items: "{{ docker_service }}"
 
 - name: Deprecation warning
   debug:
