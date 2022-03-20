@@ -7,4 +7,4 @@ __docker_cron_path: /etc/periodic/daily
 __docker_package: docker
 __docker_pip_package: py3-pip
 docker_service:
-  - docker.service
+  - docker
