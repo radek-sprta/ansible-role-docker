@@ -1,5 +1,5 @@
 ---
 - name: Install pip
-  package:
+  ansible.builtin.package:
     name: "{{ docker_pip_package }}"
     state: present

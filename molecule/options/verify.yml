@@ -6,19 +6,19 @@
     # Systemd acts weird in containers, so we check it
     # directly, without using the service_facts
     - name: Check that Docker is enabled and stopped
-      service:
+      ansible.builtin.service:
         name: docker
         enabled: true
         state: stopped
       register: docker_status
 
     - name: Assert Docker is enabled and stopped
-      assert:
+      ansible.builtin.assert:
         that:
           - "not docker_status.changed"
 
     - name: Check if docker-compose and docker python library are installed
-      pip:
+      ansible.builtin.pip:
         name:
           - docker
           - docker-compose
@@ -26,12 +26,12 @@
       register: pip_packages
 
     - name: Assert that pip packages were already installed
-      assert:
+      ansible.builtin.assert:
         that:
           - "not pip_packages.changed"
 
     - name: Check daemon.json existence
-      stat:
+      ansible.builtin.stat:
         path: /etc/docker/daemon.json
       register: daemon_json_file
       failed_when: not daemon_json_file.stat.exists

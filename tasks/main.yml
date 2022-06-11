@@ -1,46 +1,46 @@
 ---
 - name: Include system-specific vars
-  include_vars: "{{ ansible_os_family }}.yml"
+  ansible.builtin.include_vars: "{{ ansible_os_family }}.yml"
 
 - name: Set Docker package variable
-  set_fact:
+  ansible.builtin.set_fact:
     docker_package: "{{ __docker_package }}"
   when: not docker_package | bool
 
 - name: Set Docker pip package variable
-  set_fact:
+  ansible.builtin.set_fact:
     docker_pip_package: "{{ __docker_pip_package }}"
   when: not docker_pip_package | bool
 
-- include_tasks: "setup-{{ ansible_os_family }}.yml"
+- ansible.builtin.include_tasks: "setup-{{ ansible_os_family }}.yml"
   when: docker_install | bool
 
-- import_tasks: "install-pip.yml"
+- ansible.builtin.import_tasks: "install-pip.yml"
   when: docker_install_compose | bool or docker_install_python_library | bool
 
-- import_tasks: "docker-python-library.yml"
+- ansible.builtin.import_tasks: "docker-python-library.yml"
   when: docker_install_python_library | bool
 
-- import_tasks: "docker-compose.yml"
+- ansible.builtin.import_tasks: "docker-compose.yml"
   when: docker_install_compose | bool
 
-- import_tasks: "docker-prune.yml"
+- ansible.builtin.import_tasks: "docker-prune.yml"
   when: docker_system_prune | bool
 
-- import_tasks: "docker-extras.yml"
+- ansible.builtin.import_tasks: "docker-extras.yml"
   when: docker_enable_metrics or docker_log_driver != "json-file"
 
-- import_tasks: "docker-options.yml"
+- ansible.builtin.import_tasks: "docker-options.yml"
   when: docker_daemon_options | length > 0
 
-- include_tasks: "docker-users.yml"
+- ansible.builtin.include_tasks: "docker-users.yml"
   when: docker_users | length > 0
 
 - name: Restart Docker if needed
-  meta: flush_handlers
+  ansible.builtin.meta: flush_handlers
 
 - name: Ensure Docker service state
-  service:
+  ansible.builtin.service:
     name: "{{ item }}"
     state: "{{ docker_service_state }}"
     enabled: "{{ docker_service_enabled }}"

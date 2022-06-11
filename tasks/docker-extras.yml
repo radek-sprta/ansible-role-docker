@@ -1,13 +1,13 @@
 ---
 - name: "Render deprecated role options to json"
-  set_fact:
+  ansible.builtin.set_fact:
     __docker_deprecated_role_options: "{{ lookup('template', '../templates/daemon.json.j2') }}"
 
 - name: "Combine options dictionaries"
-  set_fact:
+  ansible.builtin.set_fact:
     docker_daemon_options: "{{ docker_daemon_options | combine(__docker_deprecated_role_options) }}"
 
 - name: "Trigger deprecation warning"
-  command: /bin/true
+  ansible.builtin.command: /bin/true
   changed_when: true
   notify: Deprecation warning

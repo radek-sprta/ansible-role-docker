@@ -1,6 +1,6 @@
 ---
 - name: "Make sure /etc/docker directory exists"
-  file:
+  ansible.builtin.file:
     path: /etc/docker
     state: directory
     owner: root
@@ -8,7 +8,7 @@
     mode: 0755
 
 - name: "Configure Docker extra options"
-  copy:
+  ansible.builtin.copy:
     content: "{{ docker_daemon_options | to_nice_json }}"
     dest: /etc/docker/daemon.json
     owner: root
