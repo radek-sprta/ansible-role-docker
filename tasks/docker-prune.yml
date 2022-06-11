@@ -7,18 +7,21 @@
   when: ansible_service_mgr != "systemd"
 
 - name: Set up docker system prune timer
-  ansible.builtin.block:
+  block:
+
     - name: Copy systemd units
       ansible.builtin.template:
         src: "{{ item }}"
         dest: "/etc/systemd/system/{{ item }}"
-        mode: "0644"
+        mode: 0644
       with_items:
         - "docker-prune.service"
         - "docker-prune.timer"
+
     - name: Start docker system prune timer
       ansible.builtin.systemd:
         name: "docker-prune.timer"
         state: started
         enabled: true
+
   when: ansible_service_mgr == "systemd"

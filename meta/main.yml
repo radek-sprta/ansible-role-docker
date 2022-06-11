@@ -23,7 +23,7 @@ galaxy_info:
         - jammy
     - name: opensuse
       versions:
-        - 15.4
+        - 15.3
     - name: SLES
       versions:
         - 15
