@@ -6,12 +6,12 @@ galaxy_info:
   description: A role to install Docker, docker-compose and the python library.
   issue_tracker_url: https://gitlab.com/radek-sprta/ansible-role-docker/-/issues
   license: MIT
-  min_ansible_version: 2.9
+  min_ansible_version: "2.10"
 
   platforms:
     - name: Alpine
       versions:
-        - any
+        - all
     - name: Debian
       versions:
         - buster
@@ -20,9 +20,10 @@ galaxy_info:
       versions:
         - bionic
         - focal
+        - jammy
     - name: opensuse
       versions:
-        - 15.3
+        - 15.4
     - name: SLES
       versions:
         - 15
