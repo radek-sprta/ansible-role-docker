@@ -1,0 +1,86 @@
+---
+arguments_specs:
+  main:
+    short_description: Main entrypoint for the role
+    options:
+      docker_install:
+        default: true
+        description: Whether to install docker.
+        required: false
+        type: bool
+      docker_install_compose:
+        default: false
+        description: Whether to install docker compose.
+        required: false
+        type: bool
+      docker_install_python_library:
+        default: false
+        description: Whether to install docker python library.
+        required: false
+        type: bool
+      docker_prune_period:
+        default: "24h"
+        description: Period to run docker system prune.
+        required: false
+        type: str
+      docker_system_prune:
+        default: true
+        description: Periodically run docker system prune.
+        required: false
+        type: bool
+      docker_service_enabled:
+        default: true
+        description: Should the service be enabled?
+        required: false
+        type: bool
+      docker_service_state:
+        choices:
+          - reloaded
+          - restarted
+          - started
+          - stopped
+        default: started
+        description: Desired service state.
+        required: false
+        type: str
+      docker_users:
+        default: []
+        description: Users to add to docker group.
+        required: false
+        type: list
+        elements: str
+      docker_daemon_options:
+        default: {}
+        description: Extra daemon logging options.
+        required: false
+        type: dict
+      docker_package:
+        default: ''
+        description: Package to use.
+        required: false
+        type: str
+      docker_pip_package:
+        default: ''
+        description: Pip package to use.
+        required: false
+        type: str
+      docker_enable_metrics:
+        default: false
+        description: Enable metrics endpoint.
+        required: false
+        type: bool
+      docker_log_driver:
+        default: json-file
+        description: Log driver.
+        required: false
+        type: str
+      docker_log_opts:
+        default: {}
+        description: Extra logging options.
+        required: false
+        type: dict
+      docker_metrics_host:
+        default: 127.0.0.1
+        description: Listen address for metrics.
+        required: false
+        type: str
