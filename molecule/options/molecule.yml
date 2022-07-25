@@ -7,12 +7,13 @@ lint: |
   yamllint .
   ansible-lint
 platforms:
-  - name: Alpine
-    image: docker.io/rsprta/alpine-ansible
+  - name: ansible-role-docker
+    image: ${MOLECULE_IMAGE:-rsprta/alpine-ansible}
     command: ''
     volumes:
       - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
     pre_build_image: true
+    privileged: true
 provisioner:
   name: ansible
 verifier:
